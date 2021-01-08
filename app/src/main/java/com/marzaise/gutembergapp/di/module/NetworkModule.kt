@@ -1,5 +1,6 @@
 package com.marzaise.gutembergapp.di.module
 
+import com.marzaise.gutembergapp.BuildConfig
 import com.marzaise.gutembergapp.network.GutembergApiService
 import com.marzaise.gutembergapp.network.RequestInterceptor
 import dagger.Module
@@ -44,7 +45,7 @@ class NetworkModule {
     @Provides
     fun retrofit(okHttpClient: OkHttpClient?): Retrofit? {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.GUTEMBERG_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
